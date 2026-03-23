@@ -37,11 +37,13 @@ async function callGemini(input) {
 
   const payload = await response.json();
   const rawText = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
+  console.log("[Gemini raw output]", rawText);
   if (!rawText) {
     throw new Error("Gemini response did not include content.");
   }
 
   const parsed = extractJsonObject(rawText);
+  console.log("[Gemini parsed output]", JSON.stringify(parsed, null, 2));
   if (!validateAgentOutput(parsed)) {
     throw new Error("Gemini output failed schema validation.");
   }
@@ -58,6 +60,7 @@ export async function POST(request) {
 
     const input = normalizeInput(body);
     const agentResult = await callGemini(input);
+    console.log("[API /api/agent response]", JSON.stringify(agentResult, null, 2));
     return NextResponse.json(agentResult, { status: 200 });
   } catch (error) {
     console.error("/api/agent analysis error:", error);

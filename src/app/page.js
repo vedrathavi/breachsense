@@ -88,15 +88,24 @@ function normalizeResult(payload, input) {
       node: payload?.owasp?.node || "Not available",
     },
     legal: {
-      it_act:
-        Array.isArray(payload?.legal?.it_act) && payload.legal.it_act.length > 0
-          ? payload.legal.it_act
-          : ["Not available"],
-      dpdp:
-        Array.isArray(payload?.legal?.dpdp) && payload.legal.dpdp.length > 0
-          ? payload.legal.dpdp
-          : ["Not available"],
-      penalty: payload?.legal?.penalty || "Not available",
+      india: {
+        it_act: payload?.legal?.india?.it_act || [],
+        dpdp: payload?.legal?.india?.dpdp || [],
+      },
+      international: {
+        gdpr: {
+          applicable: payload?.legal?.international?.gdpr?.applicable ?? false,
+          articles: payload?.legal?.international?.gdpr?.articles || [],
+          penalty: payload?.legal?.international?.gdpr?.penalty || "",
+        },
+        hipaa: {
+          applicable: payload?.legal?.international?.hipaa?.applicable ?? false,
+          provisions: payload?.legal?.international?.hipaa?.provisions || [],
+          penalty: payload?.legal?.international?.hipaa?.penalty || "",
+        },
+        others: payload?.legal?.international?.others || [],
+      },
+      overall_penalty: payload?.legal?.overall_penalty || "Not available",
     },
     prevention:
       Array.isArray(payload?.prevention) && payload.prevention.length > 0

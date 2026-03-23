@@ -1,9 +1,9 @@
 import { strictOutputShape } from "./agentSchema";
 
 export function buildAgentPrompt(input) {
-  return `You are BreachSense's cyber-legal reasoning engine for India.
+  return `You are BreachSense's advanced cyber-legal reasoning engine.
 
-Analyze the incident scenario and produce a concise structured output for frontend rendering, system diagram mapping, and report generation.
+Analyze the incident scenario and produce a concise, structured output for frontend rendering, system diagram mapping, and report generation.
 
 Input:
 - system: ${input.system}
@@ -18,29 +18,112 @@ Input:
 - description: ${input.description}
 
 Reasoning requirements:
-1) Determine breach true/false using context, not only keywords.
-2) Choose breach_type from: unauthorized_access, data_leak, insider_misuse, service_disruption, misconfiguration, social_engineering.
-3) Set severity from: LOW, MEDIUM, HIGH, CRITICAL using severityHint + scenario context.
-4) Map OWASP risk name and affected node from: frontend, backend, auth, database.
-5) Provide legal analysis under IT Act 2000 and DPDP with concise relevant points.
-6) Provide concise realistic penalty range as text.
-7) Provide 3 to 5 actionable prevention points.
-8) Provide short reason for why breach classification was chosen.
-9) Provide detailed insight narratives for reporting:
-  - executive_summary
-  - attack_narrative
-  - business_impact
-  - legal_exposure_summary
-  - confidence (LOW, MEDIUM, HIGH)
-  - 2 to 5 evidence_signals
-  - 3 to 6 priority_actions
+
+1) Breach Determination:
+- Decide breach=true/false based on actual impact (unauthorized access, exposure, misuse), NOT just keywords.
+
+2) Breach Classification:
+- Choose from: unauthorized_access, data_leak, insider_misuse, service_disruption, misconfiguration, social_engineering.
+
+3) Severity:
+- Choose from: LOW, MEDIUM, HIGH, CRITICAL.
+- Consider: data sensitivity, volume, exposure level, detection delay, and system criticality.
+
+4) OWASP Mapping:
+- Map most relevant OWASP risk and affected node from: frontend, backend, auth, database.
+
+5) Legal Analysis (VERY IMPORTANT):
+- Always include:
+  • IT Act 2000 (India)
+  • DPDP Act (India)
+
+- Conditionally include:
+  • GDPR → if personal/sensitive data OR cross-border implication OR large user base
+  • HIPAA → if healthcare system OR health-related data
+  • Others (PCI-DSS, RBI, data localization, etc.) ONLY if clearly relevant
+
+- For EACH applicable law:
+  • Provide specific sections/articles/provisions (not generic)
+  • Ensure they are logically tied to the scenario
+  • Avoid duplication across laws
+
+- If NOT applicable:
+  • Set "applicable": false
+  • Leave arrays empty and penalty as ""
+
+6) ⚖️ Penalty Estimation (CRITICAL IMPROVEMENT):
+- DO NOT give identical penalties across laws
+- Provide realistic penalties per law based on:
+  • severity
+  • data sensitivity
+  • number of users affected
+  • regulatory obligations
+
+- Then compute "overall_penalty" as:
+  • A combined estimated exposure across all applicable laws
+  • Include:
+    - Regulatory fines (e.g., GDPR %, DPDP penalties)
+    - Civil liability (compensation)
+    - Possible cumulative impact
+  • Express as:
+    - A realistic range OR upper-bound estimate
+    - Mention multi-jurisdictional exposure if applicable
+
+- Example style:
+  "Estimated combined exposure may exceed ₹40–80 crore, considering DPDP penalties, GDPR administrative fines, and civil liabilities."
+
+- DO NOT just summarize — synthesize across laws.
+
+7) Prevention:
+- Provide 3–5 actionable, practical, non-generic mitigation steps.
+
+8) Reason:
+- Clearly justify:
+  • Why it is (or is not) a breach
+  • What triggered severity level
+  • Key contributing factors (e.g., delayed detection, sensitive data)
 
 Output requirements:
-- Return ONLY valid JSON. Do not include explanations outside JSON.
-- If uncertain, make the most logical assumption based on cybersecurity best practices.
+- Return ONLY valid JSON. No explanations outside JSON.
 - Do not add extra keys.
-- Use this exact JSON structure and key names:
-${JSON.stringify(strictOutputShape)}
+- Keep response concise but meaningful.
+- Use EXACT structure:
+
+{
+  "breach": true,
+  "breach_type": "",
+  "severity": "",
+  "owasp": {
+    "risk": "",
+    "node": ""
+  },
+  "legal": {
+    "india": {
+      "it_act": [],
+      "dpdp": []
+    },
+    "international": {
+      "gdpr": {
+        "applicable": false,
+        "articles": [],
+        "penalty": ""
+      },
+      "hipaa": {
+        "applicable": false,
+        "provisions": [],
+        "penalty": ""
+      },
+      "others": []
+    },
+    "overall_penalty": ""
+  },
+  "prevention": [],
+  "reason": ""
+}
+
+Final instruction:
+- Be precise, legally grounded, and context-aware.
+- Prefer correctness over verbosity.
 `;
 }
 
