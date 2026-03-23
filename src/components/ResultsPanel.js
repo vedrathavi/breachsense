@@ -14,19 +14,23 @@ export default function ResultsPanel({ result }) {
 
       <div className="grid gap-2 text-sm">
         <p>
-          <strong>Breach Detected:</strong> {result.breachDetected ? "Yes" : "No"}
+          <strong>Breach Detected:</strong>{" "}
+          {result.breachDetected ? "Yes" : "No"}
         </p>
         <p>
           <strong>Breach Type:</strong> {result.breachType}
         </p>
         <p>
           <strong>Severity:</strong>{" "}
-          <span className={`rounded px-2 py-1 text-xs font-semibold ${severityBadgeClass(result.severity)}`}>
+          <span
+            className={`rounded px-2 py-1 text-xs font-semibold ${severityBadgeClass(result.severity)}`}
+          >
             {result.severity}
           </span>
         </p>
         <p>
-          <strong>OWASP:</strong> {result.owaspMapping.id} - {result.owaspMapping.title}
+          <strong>OWASP:</strong> {result.owaspMapping.id} -{" "}
+          {result.owaspMapping.title}
         </p>
         <p>
           <strong>Affected Component:</strong> {result.affectedComponent}
@@ -59,7 +63,8 @@ export default function ResultsPanel({ result }) {
       </div>
 
       <p className="text-sm">
-        <strong>Estimated Penalty Exposure:</strong> {result.legalAnalysis.estimatedPenalty}
+        <strong>Estimated Penalty Exposure:</strong>{" "}
+        {result.legalAnalysis.estimatedPenalty}
       </p>
 
       <div>

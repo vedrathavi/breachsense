@@ -5,7 +5,9 @@ export default function ErrorBanner({ message, isDark = false }) {
   return (
     <article
       className={`rounded-xl border p-4 ${
-        isDark ? "border-red-400/40 bg-neutral-950 text-red-200" : "border-red-200 bg-red-50 text-red-700"
+        isDark
+          ? "border-red-400/40 bg-neutral-950 text-red-200"
+          : "border-red-200 bg-red-50 text-red-700"
       }`}
     >
       <h3 className="inline-flex items-center gap-2 text-sm font-semibold">

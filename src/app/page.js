@@ -63,7 +63,8 @@ function validateForm(form) {
   if (!safe(form.systemType)) errors.systemType = "This field is required";
   if (!safe(form.dataType)) errors.dataType = "This field is required";
   if (!safe(form.description)) errors.description = "This field is required";
-  if (!safe(form.incidentTitle)) errors.incidentTitle = "This field is required";
+  if (!safe(form.incidentTitle))
+    errors.incidentTitle = "This field is required";
   return errors;
 }
 
@@ -87,14 +88,24 @@ function normalizeResult(payload, input) {
       node: payload?.owasp?.node || "Not available",
     },
     legal: {
-      it_act: Array.isArray(payload?.legal?.it_act) && payload.legal.it_act.length > 0 ? payload.legal.it_act : ["Not available"],
-      dpdp: Array.isArray(payload?.legal?.dpdp) && payload.legal.dpdp.length > 0 ? payload.legal.dpdp : ["Not available"],
+      it_act:
+        Array.isArray(payload?.legal?.it_act) && payload.legal.it_act.length > 0
+          ? payload.legal.it_act
+          : ["Not available"],
+      dpdp:
+        Array.isArray(payload?.legal?.dpdp) && payload.legal.dpdp.length > 0
+          ? payload.legal.dpdp
+          : ["Not available"],
       penalty: payload?.legal?.penalty || "Not available",
     },
-    prevention: Array.isArray(payload?.prevention) && payload.prevention.length > 0 ? payload.prevention : ["Not available"],
+    prevention:
+      Array.isArray(payload?.prevention) && payload.prevention.length > 0
+        ? payload.prevention
+        : ["Not available"],
     insights: {
       confidence: payload?.insights?.confidence || "MEDIUM",
-      executive_summary: payload?.insights?.executive_summary || "Not available",
+      executive_summary:
+        payload?.insights?.executive_summary || "Not available",
     },
   };
 }
@@ -140,7 +151,7 @@ export default function Home() {
 
   const severityVisuals = useMemo(
     () => getSeverityVisuals(result?.severity || "LOW", isDark),
-    [result?.severity, isDark]
+    [result?.severity, isDark],
   );
 
   function updateField(event) {

@@ -10,7 +10,9 @@ export function getSeverityVisuals(value, isDark = false) {
 
   const palette = {
     LOW: {
-      cardBorder: isDark ? "border-l-4 border-l-emerald-400" : "border-l-4 border-l-emerald-500",
+      cardBorder: isDark
+        ? "border-l-4 border-l-emerald-400"
+        : "border-l-4 border-l-emerald-500",
       cardTint: isDark ? "bg-emerald-950/30" : "bg-emerald-50",
       badge: isDark
         ? "border border-emerald-400/60 bg-emerald-500/20 text-emerald-200"
@@ -21,7 +23,9 @@ export function getSeverityVisuals(value, isDark = false) {
       glow: 14,
     },
     MEDIUM: {
-      cardBorder: isDark ? "border-l-4 border-l-amber-300" : "border-l-4 border-l-amber-500",
+      cardBorder: isDark
+        ? "border-l-4 border-l-amber-300"
+        : "border-l-4 border-l-amber-500",
       cardTint: isDark ? "bg-amber-900/25" : "bg-amber-50",
       badge: isDark
         ? "border border-amber-300/60 bg-amber-500/20 text-amber-100"
@@ -32,7 +36,9 @@ export function getSeverityVisuals(value, isDark = false) {
       glow: 16,
     },
     HIGH: {
-      cardBorder: isDark ? "border-l-4 border-l-orange-300" : "border-l-4 border-l-orange-500",
+      cardBorder: isDark
+        ? "border-l-4 border-l-orange-300"
+        : "border-l-4 border-l-orange-500",
       cardTint: isDark ? "bg-orange-900/25" : "bg-orange-50",
       badge: isDark
         ? "border border-orange-300/60 bg-orange-500/20 text-orange-100"
@@ -43,7 +49,9 @@ export function getSeverityVisuals(value, isDark = false) {
       glow: 20,
     },
     CRITICAL: {
-      cardBorder: isDark ? "border-l-4 border-l-rose-300" : "border-l-4 border-l-red-500",
+      cardBorder: isDark
+        ? "border-l-4 border-l-rose-300"
+        : "border-l-4 border-l-red-500",
       cardTint: isDark ? "bg-rose-950/30" : "bg-red-50",
       badge: isDark
         ? "border border-rose-300/60 bg-rose-500/20 text-rose-100"

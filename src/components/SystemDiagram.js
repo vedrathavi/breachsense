@@ -18,12 +18,27 @@ const architectureBySystem = {
     nodes: [
       { id: "user", label: "User", type: "user", zone: "external" },
       { id: "frontend", label: "Frontend", type: "frontend", zone: "internal" },
-      { id: "api-gateway", label: "API Gateway", type: "process", zone: "internal" },
+      {
+        id: "api-gateway",
+        label: "API Gateway",
+        type: "process",
+        zone: "internal",
+      },
       { id: "backend", label: "Backend", type: "process", zone: "internal" },
       { id: "auth", label: "Auth Server", type: "auth", zone: "internal" },
-      { id: "token-service", label: "Token Service", type: "auth", zone: "internal" },
+      {
+        id: "token-service",
+        label: "Token Service",
+        type: "auth",
+        zone: "internal",
+      },
       { id: "database", label: "Database", type: "datastore", zone: "secure" },
-      { id: "sensitive-store", label: "Health Records", type: "sensitive", zone: "secure" },
+      {
+        id: "sensitive-store",
+        label: "Health Records",
+        type: "sensitive",
+        zone: "secure",
+      },
     ],
     edges: [
       ["user", "frontend", "Login Request"],
@@ -40,11 +55,26 @@ const architectureBySystem = {
     nodes: [
       { id: "user", label: "User", type: "user", zone: "external" },
       { id: "frontend", label: "Frontend", type: "frontend", zone: "internal" },
-      { id: "api-gateway", label: "API Gateway", type: "process", zone: "internal" },
+      {
+        id: "api-gateway",
+        label: "API Gateway",
+        type: "process",
+        zone: "internal",
+      },
       { id: "backend", label: "Backend", type: "process", zone: "internal" },
       { id: "auth", label: "Auth Server", type: "auth", zone: "internal" },
-      { id: "token-service", label: "Token Service", type: "auth", zone: "internal" },
-      { id: "payment-gateway", label: "Payment Gateway", type: "process", zone: "internal" },
+      {
+        id: "token-service",
+        label: "Token Service",
+        type: "auth",
+        zone: "internal",
+      },
+      {
+        id: "payment-gateway",
+        label: "Payment Gateway",
+        type: "process",
+        zone: "internal",
+      },
       { id: "database", label: "Database", type: "datastore", zone: "secure" },
     ],
     edges: [
@@ -63,13 +93,33 @@ const architectureBySystem = {
     nodes: [
       { id: "user", label: "User", type: "user", zone: "external" },
       { id: "frontend", label: "Frontend", type: "frontend", zone: "internal" },
-      { id: "api-gateway", label: "API Gateway", type: "process", zone: "internal" },
+      {
+        id: "api-gateway",
+        label: "API Gateway",
+        type: "process",
+        zone: "internal",
+      },
       { id: "backend", label: "Backend", type: "process", zone: "internal" },
       { id: "auth", label: "Auth Server", type: "auth", zone: "internal" },
-      { id: "token-service", label: "Token Service", type: "auth", zone: "internal" },
-      { id: "order-service", label: "Order Service", type: "process", zone: "internal" },
+      {
+        id: "token-service",
+        label: "Token Service",
+        type: "auth",
+        zone: "internal",
+      },
+      {
+        id: "order-service",
+        label: "Order Service",
+        type: "process",
+        zone: "internal",
+      },
       { id: "database", label: "Database", type: "datastore", zone: "secure" },
-      { id: "sensitive-store", label: "Customer PII", type: "sensitive", zone: "secure" },
+      {
+        id: "sensitive-store",
+        label: "Customer PII",
+        type: "sensitive",
+        zone: "secure",
+      },
     ],
     edges: [
       ["user", "frontend", "Checkout Request"],
@@ -88,10 +138,25 @@ const architectureBySystem = {
       { id: "user", label: "User", type: "user", zone: "external" },
       { id: "portal", label: "Portal", type: "frontend", zone: "internal" },
       { id: "backend", label: "Backend", type: "process", zone: "internal" },
-      { id: "identity-service", label: "Identity Service", type: "auth", zone: "internal" },
-      { id: "token-service", label: "Token Service", type: "auth", zone: "internal" },
+      {
+        id: "identity-service",
+        label: "Identity Service",
+        type: "auth",
+        zone: "internal",
+      },
+      {
+        id: "token-service",
+        label: "Token Service",
+        type: "auth",
+        zone: "internal",
+      },
       { id: "database", label: "Database", type: "datastore", zone: "secure" },
-      { id: "sensitive-store", label: "Citizen Records", type: "sensitive", zone: "secure" },
+      {
+        id: "sensitive-store",
+        label: "Citizen Records",
+        type: "sensitive",
+        zone: "secure",
+      },
     ],
     edges: [
       ["user", "portal", "Citizen Request"],
@@ -106,12 +171,32 @@ const architectureBySystem = {
     nodes: [
       { id: "user", label: "User", type: "user", zone: "external" },
       { id: "frontend", label: "Frontend", type: "frontend", zone: "internal" },
-      { id: "api-gateway", label: "API Gateway", type: "process", zone: "internal" },
-      { id: "microservices", label: "Microservices", type: "process", zone: "internal" },
+      {
+        id: "api-gateway",
+        label: "API Gateway",
+        type: "process",
+        zone: "internal",
+      },
+      {
+        id: "microservices",
+        label: "Microservices",
+        type: "process",
+        zone: "internal",
+      },
       { id: "auth", label: "Auth Server", type: "auth", zone: "internal" },
-      { id: "token-service", label: "Token Service", type: "auth", zone: "internal" },
+      {
+        id: "token-service",
+        label: "Token Service",
+        type: "auth",
+        zone: "internal",
+      },
       { id: "database", label: "Database", type: "datastore", zone: "secure" },
-      { id: "sensitive-store", label: "Sensitive Data", type: "sensitive", zone: "secure" },
+      {
+        id: "sensitive-store",
+        label: "Sensitive Data",
+        type: "sensitive",
+        zone: "secure",
+      },
     ],
     edges: [
       ["user", "frontend", "Console Request"],
@@ -127,12 +212,41 @@ const architectureBySystem = {
 };
 
 function getNodeTheme(type, isDark) {
-  if (type === "user") return { bg: isDark ? "#64748b" : "#94a3b8", text: "#ffffff", shape: "ellipse" };
-  if (type === "frontend") return { bg: isDark ? "#3b82f6" : "#2563eb", text: "#ffffff", shape: "rectangle" };
-  if (type === "process") return { bg: isDark ? "#8b5cf6" : "#7c3aed", text: "#ffffff", shape: "rectangle" };
-  if (type === "auth") return { bg: isDark ? "#fb923c" : "#ea580c", text: "#ffffff", shape: "round-rectangle" };
-  if (type === "datastore") return { bg: isDark ? "#60a5fa" : "#1e3a8a", text: "#ffffff", shape: "barrel" };
-  return { bg: isDark ? "#f87171" : "#b91c1c", text: "#ffffff", shape: "rectangle" };
+  if (type === "user")
+    return {
+      bg: isDark ? "#64748b" : "#94a3b8",
+      text: "#ffffff",
+      shape: "ellipse",
+    };
+  if (type === "frontend")
+    return {
+      bg: isDark ? "#3b82f6" : "#2563eb",
+      text: "#ffffff",
+      shape: "rectangle",
+    };
+  if (type === "process")
+    return {
+      bg: isDark ? "#8b5cf6" : "#7c3aed",
+      text: "#ffffff",
+      shape: "rectangle",
+    };
+  if (type === "auth")
+    return {
+      bg: isDark ? "#fb923c" : "#ea580c",
+      text: "#ffffff",
+      shape: "round-rectangle",
+    };
+  if (type === "datastore")
+    return {
+      bg: isDark ? "#60a5fa" : "#1e3a8a",
+      text: "#ffffff",
+      shape: "barrel",
+    };
+  return {
+    bg: isDark ? "#f87171" : "#b91c1c",
+    text: "#ffffff",
+    shape: "rectangle",
+  };
 }
 
 function mapTargetNode(requestedNode, nodes) {
@@ -153,7 +267,9 @@ function mapTargetNode(requestedNode, nodes) {
 }
 
 function buildArchitecture(systemType) {
-  const template = architectureBySystem[systemType] || architectureBySystem["Hospital / Healthcare System"];
+  const template =
+    architectureBySystem[systemType] ||
+    architectureBySystem["Hospital / Healthcare System"];
   return {
     nodes: template.nodes,
     edges: template.edges.map((edge, index) => ({
@@ -183,14 +299,24 @@ function buildNodePositions(nodes) {
     } else if (["frontend", "portal"].includes(node.id)) {
       y = 190;
       x = zoneX.internal - 120;
-    } else if (["api-gateway", "backend", "microservices", "order-service", "payment-gateway"].includes(node.id)) {
+    } else if (
+      [
+        "api-gateway",
+        "backend",
+        "microservices",
+        "order-service",
+        "payment-gateway",
+      ].includes(node.id)
+    ) {
       y = 285;
       if (node.id === "api-gateway") x = zoneX.internal - 30;
       if (node.id === "backend") x = zoneX.internal + 60;
       if (node.id === "microservices") x = zoneX.internal + 140;
       if (node.id === "order-service") x = zoneX.internal + 160;
       if (node.id === "payment-gateway") x = zoneX.internal + 180;
-    } else if (["auth", "identity-service", "token-service"].includes(node.id)) {
+    } else if (
+      ["auth", "identity-service", "token-service"].includes(node.id)
+    ) {
       y = 120;
       if (node.id === "auth") x = zoneX.internal + 95;
       if (node.id === "identity-service") x = zoneX.internal + 45;
@@ -211,9 +337,13 @@ function buildNodePositions(nodes) {
 
 function buildAttackPaths(architecture, targetNode, risk) {
   const has = (id) => architecture.nodes.some((node) => node.id === id);
-  const backendLike = ["backend", "api-gateway", "microservices"].find((nodeId) => has(nodeId));
+  const backendLike = ["backend", "api-gateway", "microservices"].find(
+    (nodeId) => has(nodeId),
+  );
   const authLike = ["auth", "identity-service"].find((nodeId) => has(nodeId));
-  const databaseLike = ["database", "sensitive-store"].find((nodeId) => has(nodeId));
+  const databaseLike = ["database", "sensitive-store"].find((nodeId) =>
+    has(nodeId),
+  );
 
   const paths = [];
 
@@ -260,26 +390,51 @@ function buildAttackPaths(architecture, targetNode, risk) {
   return paths.filter((path) => has(path.source) && has(path.target));
 }
 
-export default function SystemDiagram({ systemType, result, incidentTitle, onSnapshotChange, isDark = false }) {
+export default function SystemDiagram({
+  systemType,
+  result,
+  incidentTitle,
+  onSnapshotChange,
+  isDark = false,
+}) {
   const containerRef = useRef(null);
   const cyRef = useRef(null);
   const [tooltip, setTooltip] = useState(null);
 
   const severity = result?.severity || "LOW";
-  const architecture = useMemo(() => buildArchitecture(systemType), [systemType]);
+  const architecture = useMemo(
+    () => buildArchitecture(systemType),
+    [systemType],
+  );
 
   useEffect(() => {
     if (!containerRef.current) return;
     const visuals = getSeverityVisuals(severity, isDark);
 
-    const targetNode = mapTargetNode(result?.owasp?.node || "backend", architecture.nodes);
-    const attackPaths = buildAttackPaths(architecture, targetNode, result?.owasp?.risk || "OWASP Risk");
+    const targetNode = mapTargetNode(
+      result?.owasp?.node || "backend",
+      architecture.nodes,
+    );
+    const attackPaths = buildAttackPaths(
+      architecture,
+      targetNode,
+      result?.owasp?.risk || "OWASP Risk",
+    );
     const nodePositions = buildNodePositions(architecture.nodes);
 
     const zoneParents = [
-      { data: { id: "external-zone", label: "External Zone" }, classes: "boundary-external" },
-      { data: { id: "internal-zone", label: "Application Zone" }, classes: "boundary-internal" },
-      { data: { id: "secure-zone", label: "Secure Zone" }, classes: "boundary-secure" },
+      {
+        data: { id: "external-zone", label: "External Zone" },
+        classes: "boundary-external",
+      },
+      {
+        data: { id: "internal-zone", label: "Application Zone" },
+        classes: "boundary-internal",
+      },
+      {
+        data: { id: "secure-zone", label: "Secure Zone" },
+        classes: "boundary-secure",
+      },
     ];
 
     const nodes = architecture.nodes.map((node) => {
@@ -376,9 +531,22 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
         {
           selector: ".threat-node",
           style: {
-            width: visuals.severity === "CRITICAL" ? 84 : visuals.severity === "HIGH" ? 80 : 76,
-            height: visuals.severity === "CRITICAL" ? 84 : visuals.severity === "HIGH" ? 80 : 76,
-            "border-width": visuals.severity === "HIGH" || visuals.severity === "CRITICAL" ? 5 : 4,
+            width:
+              visuals.severity === "CRITICAL"
+                ? 84
+                : visuals.severity === "HIGH"
+                  ? 80
+                  : 76,
+            height:
+              visuals.severity === "CRITICAL"
+                ? 84
+                : visuals.severity === "HIGH"
+                  ? 80
+                  : 76,
+            "border-width":
+              visuals.severity === "HIGH" || visuals.severity === "CRITICAL"
+                ? 5
+                : 4,
             "border-color": isDark ? "#fda4af" : "#fecaca",
             "shadow-color": visuals.nodeColor,
             "shadow-blur": visuals.glow,
@@ -449,7 +617,8 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
           },
         },
         {
-          selector: ".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus",
+          selector:
+            ".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus",
           style: {
             width: visuals.edgeWidth,
             "line-style": "dashed",
@@ -484,7 +653,11 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
     let snapshotDebounce;
     const emitSnapshot = () => {
       if (!cyRef.current || typeof onSnapshotChange !== "function") return;
-      const pngData = cyRef.current.png({ full: true, scale: 2, bg: isDark ? "#111827" : "#ffffff" });
+      const pngData = cyRef.current.png({
+        full: true,
+        scale: 2,
+        bg: isDark ? "#111827" : "#ffffff",
+      });
       onSnapshotChange(pngData);
     };
 
@@ -507,25 +680,41 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
     }
 
     let pulse = false;
-    const pulseInterval = setInterval(() => {
-      pulse = !pulse;
-      const target = cy.getElementById(targetNode);
-      if (!target || target.empty()) return;
+    const pulseInterval = setInterval(
+      () => {
+        pulse = !pulse;
+        const target = cy.getElementById(targetNode);
+        if (!target || target.empty()) return;
 
-      const baseSize = visuals.severity === "CRITICAL" ? 84 : visuals.severity === "HIGH" ? 80 : 76;
-      target.style("shadow-opacity", pulse ? 0.95 : 0.55);
-      target.style("width", pulse ? baseSize + 4 : baseSize);
-      target.style("height", pulse ? baseSize + 4 : baseSize);
+        const baseSize =
+          visuals.severity === "CRITICAL"
+            ? 84
+            : visuals.severity === "HIGH"
+              ? 80
+              : 76;
+        target.style("shadow-opacity", pulse ? 0.95 : 0.55);
+        target.style("width", pulse ? baseSize + 4 : baseSize);
+        target.style("height", pulse ? baseSize + 4 : baseSize);
 
-      cy.$(".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus").style(
-        "line-color",
-        pulse ? visuals.edgeColor : isDark ? "#fca5a5" : "#fb7185"
-      );
-      cy.$(".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus").style(
-        "target-arrow-color",
-        pulse ? visuals.edgeColor : isDark ? "#fca5a5" : "#fb7185"
-      );
-    }, visuals.severity === "CRITICAL" ? 600 : visuals.severity === "HIGH" ? 750 : 900);
+        cy.$(
+          ".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus",
+        ).style(
+          "line-color",
+          pulse ? visuals.edgeColor : isDark ? "#fca5a5" : "#fb7185",
+        );
+        cy.$(
+          ".attack-flow-1, .attack-flow-2, .attack-flow-3, .attack-flow-focus",
+        ).style(
+          "target-arrow-color",
+          pulse ? visuals.edgeColor : isDark ? "#fca5a5" : "#fb7185",
+        );
+      },
+      visuals.severity === "CRITICAL"
+        ? 600
+        : visuals.severity === "HIGH"
+          ? 750
+          : 900,
+    );
 
     cy.on("mouseover", "node", (event) => {
       const node = event.target;
@@ -566,7 +755,11 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
 
   function exportDiagram() {
     if (!cyRef.current) return;
-    const pngData = cyRef.current.png({ full: true, scale: 2, bg: isDark ? "#111827" : "#ffffff" });
+    const pngData = cyRef.current.png({
+      full: true,
+      scale: 2,
+      bg: isDark ? "#111827" : "#ffffff",
+    });
     if (typeof onSnapshotChange === "function") {
       onSnapshotChange(pngData);
     }
@@ -584,16 +777,25 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
   return (
     <section
       className={`rounded-xl border p-4 shadow-sm transition-colors ${
-        isDark ? "border-neutral-800 bg-neutral-900" : "border-neutral-200 bg-white"
+        isDark
+          ? "border-neutral-800 bg-neutral-900"
+          : "border-neutral-200 bg-white"
       }`}
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <div>
-          <h2 className={`text-lg font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}>
-            {incidentTitle ? `Threat Model: ${incidentTitle}` : "Threat Model Diagram"}
+          <h2
+            className={`text-lg font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
+          >
+            {incidentTitle
+              ? `Threat Model: ${incidentTitle}`
+              : "Threat Model Diagram"}
           </h2>
-          <p className={`text-xs ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-            Architecture + threat overlay inspired by OWASP Threat Dragon concepts.
+          <p
+            className={`text-xs ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+          >
+            Architecture + threat overlay inspired by OWASP Threat Dragon
+            concepts.
           </p>
         </div>
         <button
@@ -613,13 +815,17 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
         <div
           ref={containerRef}
           className={`h-[520px] w-full rounded-lg border ${
-            isDark ? "border-neutral-800 bg-neutral-950" : "border-neutral-200 bg-white"
+            isDark
+              ? "border-neutral-800 bg-neutral-950"
+              : "border-neutral-200 bg-white"
           }`}
         />
         {tooltip ? (
           <div
             className={`pointer-events-none absolute z-10 max-w-56 rounded-md border p-2 text-xs shadow ${
-                isDark ? "border-neutral-800 bg-neutral-950 text-neutral-100" : "border-neutral-200 bg-neutral-50 text-neutral-800"
+              isDark
+                ? "border-neutral-800 bg-neutral-950 text-neutral-100"
+                : "border-neutral-200 bg-neutral-50 text-neutral-800"
             }`}
             style={{ left: tooltip.x + 14, top: tooltip.y + 14 }}
           >
@@ -631,19 +837,34 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
       </div>
 
       <div className="mt-3 grid gap-2 text-xs md:grid-cols-3">
-        <div className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-neutral-300" : "border-neutral-200 bg-neutral-50 text-neutral-700"}`}>
-          <p className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}>
+        <div
+          className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-neutral-300" : "border-neutral-200 bg-neutral-50 text-neutral-700"}`}
+        >
+          <p
+            className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
+          >
             <FiLayers className="h-3.5 w-3.5" /> Legend
           </p>
           <ul className="mt-1 space-y-1">
-            <li className="inline-flex items-center gap-1"><FiTarget className="h-3.5 w-3.5" /> Compromised Node</li>
-            <li className="inline-flex items-center gap-1"><FiShield className="h-3.5 w-3.5" /> Severity-tinted Overlay</li>
-            <li className="inline-flex items-center gap-1"><FiArrowRight className="h-3.5 w-3.5" /> Branching Data/Attack Flows</li>
+            <li className="inline-flex items-center gap-1">
+              <FiTarget className="h-3.5 w-3.5" /> Compromised Node
+            </li>
+            <li className="inline-flex items-center gap-1">
+              <FiShield className="h-3.5 w-3.5" /> Severity-tinted Overlay
+            </li>
+            <li className="inline-flex items-center gap-1">
+              <FiArrowRight className="h-3.5 w-3.5" /> Branching Data/Attack
+              Flows
+            </li>
           </ul>
         </div>
 
-        <div className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-gray-300" : "border-gray-200 bg-gray-50 text-gray-700"}`}>
-          <p className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}>
+        <div
+          className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-gray-300" : "border-gray-200 bg-gray-50 text-gray-700"}`}
+        >
+          <p
+            className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
+          >
             <FiDatabase className="h-3.5 w-3.5" /> Notation
           </p>
           <ul className="mt-1 space-y-1">
@@ -654,12 +875,19 @@ export default function SystemDiagram({ systemType, result, incidentTitle, onSna
           </ul>
         </div>
 
-        <div className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-neutral-300" : "border-neutral-200 bg-neutral-50 text-neutral-700"}`}>
-          <p className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}>
+        <div
+          className={`rounded-md border p-2 ${isDark ? "border-neutral-800 bg-neutral-950 text-neutral-300" : "border-neutral-200 bg-neutral-50 text-neutral-700"}`}
+        >
+          <p
+            className={`inline-flex items-center gap-1 font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
+          >
             <FiLock className="h-3.5 w-3.5" /> Threat Context
           </p>
           <ul className="mt-1 space-y-1">
-            <li className="inline-flex items-center gap-1"><FiAlertTriangle className="h-3.5 w-3.5" /> OWASP risk tag at impacted node</li>
+            <li className="inline-flex items-center gap-1">
+              <FiAlertTriangle className="h-3.5 w-3.5" /> OWASP risk tag at
+              impacted node
+            </li>
             <li>External / Application / Secure boundaries</li>
             <li>Severity-driven edge width and glow</li>
           </ul>

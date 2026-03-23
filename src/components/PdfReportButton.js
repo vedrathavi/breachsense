@@ -13,7 +13,7 @@ function safeText(value, fallback = "Not provided") {
 
   const collapsedLetterSpaced = normalized.replace(
     /\b(?:[A-Za-z]\s+){2,}[A-Za-z]\b/g,
-    (match) => match.replace(/\s+/g, "")
+    (match) => match.replace(/\s+/g, ""),
   );
 
   const tokens = collapsedLetterSpaced.split(" ");
@@ -81,7 +81,10 @@ function deriveOwaspFallback(scenario, breachType) {
   if (vector.includes("credential") || breach.includes("unauthorized")) {
     return { risk: "Identification and Authentication Failures", node: "auth" };
   }
-  if (category.includes("misconfiguration") || breach.includes("misconfiguration")) {
+  if (
+    category.includes("misconfiguration") ||
+    breach.includes("misconfiguration")
+  ) {
     return { risk: "Security Misconfiguration", node: "backend" };
   }
   if (category.includes("data leak") || breach.includes("data_leak")) {
@@ -140,34 +143,52 @@ function buildNormalizedResult(result, scenario) {
       node: safeText(result?.owasp?.node, fallbackOwasp.node),
     },
     legal: {
-      it_act: safeList(result?.legal?.it_act, "Section 43A (Failure to protect sensitive personal data)"),
-      dpdp: safeList(result?.legal?.dpdp, "Failure to implement reasonable security safeguards"),
+      it_act: safeList(
+        result?.legal?.it_act,
+        "Section 43A (Failure to protect sensitive personal data)",
+      ),
+      dpdp: safeList(
+        result?.legal?.dpdp,
+        "Failure to implement reasonable security safeguards",
+      ),
       penalty: sanitizePenaltyText(result?.legal?.penalty || fallbackPenalty),
     },
-    prevention: safeList(result?.prevention, "Implement immediate containment and hardening controls"),
+    prevention: safeList(
+      result?.prevention,
+      "Implement immediate containment and hardening controls",
+    ),
     insights: {
       executive_summary: safeText(
         result?.insights?.executive_summary,
-        `${safeText(scenario?.category, "Incident")} likely impacted ${safeText(scenario?.system, "the target system")} with elevated compliance risk.`
+        `${safeText(scenario?.category, "Incident")} likely impacted ${safeText(scenario?.system, "the target system")} with elevated compliance risk.`,
       ),
       attack_narrative: safeText(
         result?.insights?.attack_narrative,
-        `Likely path: ${safeText(scenario?.attackVector, "initial compromise")} -> privileged/system access -> potential data/system impact.`
+        `Likely path: ${safeText(scenario?.attackVector, "initial compromise")} -> privileged/system access -> potential data/system impact.`,
       ),
       business_impact: safeText(
         result?.insights?.business_impact,
         `Potential impact includes service trust erosion, incident response overhead, and regulatory scrutiny for ${safeText(
           scenario?.dataType,
-          "sensitive data"
-        )}.`
+          "sensitive data",
+        )}.`,
       ),
       legal_exposure_summary: safeText(
         result?.insights?.legal_exposure_summary,
-        "Potential exposure under IT Act and DPDP obligations due to safeguard and breach-notification expectations."
+        "Potential exposure under IT Act and DPDP obligations due to safeguard and breach-notification expectations.",
       ),
-      confidence: safeText(result?.insights?.confidence, "MEDIUM").toUpperCase(),
-      evidence_signals: safeList(result?.insights?.evidence_signals, "Incident pattern and context indicate a credible compromise scenario"),
-      priority_actions: safeList(result?.insights?.priority_actions, "Contain affected access paths and initiate legal/compliance workflow"),
+      confidence: safeText(
+        result?.insights?.confidence,
+        "MEDIUM",
+      ).toUpperCase(),
+      evidence_signals: safeList(
+        result?.insights?.evidence_signals,
+        "Incident pattern and context indicate a credible compromise scenario",
+      ),
+      priority_actions: safeList(
+        result?.insights?.priority_actions,
+        "Contain affected access paths and initiate legal/compliance workflow",
+      ),
     },
   };
 }
@@ -330,7 +351,10 @@ export default function PdfReportButton({ result, scenario, diagramImage }) {
             ? colors.yellow
             : colors.green;
 
-    const insightConfidence = safeText(normalizedResult?.insights?.confidence, "LOW").toUpperCase();
+    const insightConfidence = safeText(
+      normalizedResult?.insights?.confidence,
+      "LOW",
+    ).toUpperCase();
     const confidenceColor = detectConfidenceColor(insightConfidence, colors);
 
     // HEADER
@@ -386,7 +410,9 @@ export default function PdfReportButton({ result, scenario, diagramImage }) {
     section("5. Legal Analysis");
     list("IT Act", normalizedResult.legal?.it_act);
     list("DPDP", normalizedResult.legal?.dpdp);
-    const normalizedPenalty = sanitizePenaltyText(normalizedResult.legal?.penalty);
+    const normalizedPenalty = sanitizePenaltyText(
+      normalizedResult.legal?.penalty,
+    );
     field("Penalty", normalizedPenalty);
 
     // INSIGHTS
@@ -394,7 +420,10 @@ export default function PdfReportButton({ result, scenario, diagramImage }) {
     field("Executive Summary", normalizedResult?.insights?.executive_summary);
     field("Attack Narrative", normalizedResult?.insights?.attack_narrative);
     field("Business Impact", normalizedResult?.insights?.business_impact);
-    field("Legal Exposure Summary", normalizedResult?.insights?.legal_exposure_summary);
+    field(
+      "Legal Exposure Summary",
+      normalizedResult?.insights?.legal_exposure_summary,
+    );
 
     writeText("Confidence", { style: "bold", size: 10 });
     doc.setFillColor(...confidenceColor);

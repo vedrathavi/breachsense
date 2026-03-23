@@ -19,63 +19,102 @@ function getInputClassName(isDark) {
       ? "border-neutral-800 bg-neutral-900 text-neutral-100 focus:border-neutral-500 focus:ring-neutral-600/40 autofill:!bg-neutral-900 autofill:!text-neutral-100"
       : "border-neutral-300 bg-neutral-100 text-neutral-900 focus:border-neutral-500 focus:ring-neutral-200 autofill:!bg-neutral-100 autofill:!text-neutral-900"
   }`;
-// Autofill override for input fields (Tailwind JIT required for arbitrary variants)
-// If not working, add the following to your global CSS (e.g., globals.css):
-// input:-webkit-autofill {
-//   -webkit-box-shadow: 0 0 0 1000px #f3f4f6 inset !important; /* bg-neutral-100 */
-//   -webkit-text-fill-color: #171717 !important; /* text-neutral-900 */
-// }
-// [data-theme="dark"] input:-webkit-autofill {
-//   -webkit-box-shadow: 0 0 0 1000px #171717 inset !important; /* bg-neutral-900 */
-//   -webkit-text-fill-color: #f3f4f6 !important; /* text-neutral-100 */
-// }
+  // Autofill override for input fields (Tailwind JIT required for arbitrary variants)
+  // If not working, add the following to your global CSS (e.g., globals.css):
+  // input:-webkit-autofill {
+  //   -webkit-box-shadow: 0 0 0 1000px #f3f4f6 inset !important; /* bg-neutral-100 */
+  //   -webkit-text-fill-color: #171717 !important; /* text-neutral-900 */
+  // }
+  // [data-theme="dark"] input:-webkit-autofill {
+  //   -webkit-box-shadow: 0 0 0 1000px #171717 inset !important; /* bg-neutral-900 */
+  //   -webkit-text-fill-color: #f3f4f6 !important; /* text-neutral-100 */
+  // }
 }
 
 function LabelText({ icon: Icon, text, isDark }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 font-medium ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+    <span
+      className={`inline-flex items-center gap-1.5 font-medium ${isDark ? "text-neutral-200" : "text-neutral-800"}`}
+    >
       <Icon className="h-3.5 w-3.5" />
       {text}
     </span>
   );
 }
 
-function SelectField({ label, icon, name, value, onChange, options, helperText, isDark }) {
+function SelectField({
+  label,
+  icon,
+  name,
+  value,
+  onChange,
+  options,
+  helperText,
+  isDark,
+}) {
   const inputClassName = getInputClassName(isDark);
 
   return (
     <label className="grid gap-1.5 text-sm">
       <LabelText icon={icon} text={label} isDark={isDark} />
-      <select name={name} value={value} onChange={onChange} className={inputClassName}>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={inputClassName}
+      >
         {options.map((option) => (
-          <option key={option} value={option} className={isDark ? "text-neutral-100 bg-neutral-900" : "text-neutral-900"}>
+          <option
+            key={option}
+            value={option}
+            className={
+              isDark ? "text-neutral-100 bg-neutral-900" : "text-neutral-900"
+            }
+          >
             {option}
           </option>
         ))}
       </select>
       {helperText ? (
-        <span className={`text-xs ${isDark ? "text-neutral-400" : "text-neutral-500"}`}>{helperText}</span>
+        <span
+          className={`text-xs ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
+        >
+          {helperText}
+        </span>
       ) : null}
     </label>
   );
 }
 
-export default function ScenarioForm({ form, onChange, errors = {}, isDark = false }) {
+export default function ScenarioForm({
+  form,
+  onChange,
+  errors = {},
+  isDark = false,
+}) {
   const inputClassName = getInputClassName(isDark);
 
   return (
     <section
       className={`rounded-2xl border p-6 shadow-sm transition-colors ${
-        isDark ? "border-neutral-800 bg-neutral-900" : "border-neutral-200 bg-white"
+        isDark
+          ? "border-neutral-800 bg-neutral-900"
+          : "border-neutral-200 bg-white"
       }`}
     >
-      <h2 className={`text-xl font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}>
+      <h2
+        className={`text-xl font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
+      >
         Incident Configuration
       </h2>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">
         <label className="grid gap-1.5 text-sm md:col-span-2">
-          <LabelText icon={FiFileText} text="Incident Title / Breach Name" isDark={isDark} />
+          <LabelText
+            icon={FiFileText}
+            text="Incident Title / Breach Name"
+            isDark={isDark}
+          />
           <input
             name="incidentTitle"
             value={form.incidentTitle ?? ""}
@@ -83,7 +122,9 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
             placeholder="e.g., Unauthorized Access to Patient Records"
             className={inputClassName}
           />
-          {errors.incidentTitle ? <span className="text-xs text-red-600">{errors.incidentTitle}</span> : null}
+          {errors.incidentTitle ? (
+            <span className="text-xs text-red-600">{errors.incidentTitle}</span>
+          ) : null}
         </label>
 
         <SelectField
@@ -102,7 +143,9 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
             "Cloud Service Provider",
           ]}
         />
-        {errors.systemType ? <p className="-mt-3 text-xs text-red-600">{errors.systemType}</p> : null}
+        {errors.systemType ? (
+          <p className="-mt-3 text-xs text-red-600">{errors.systemType}</p>
+        ) : null}
 
         <SelectField
           label="Data Type"
@@ -120,7 +163,9 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
           ]}
           helperText="Select the primary data category impacted by the incident."
         />
-        {errors.dataType ? <p className="-mt-3 text-xs text-red-600">{errors.dataType}</p> : null}
+        {errors.dataType ? (
+          <p className="-mt-3 text-xs text-red-600">{errors.dataType}</p>
+        ) : null}
 
         <SelectField
           label="Data Volume"
@@ -129,7 +174,11 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
           value={form.dataVolume}
           onChange={onChange}
           isDark={isDark}
-          options={["Low (few records)", "Medium (hundreds)", "High (thousands+)"]}
+          options={[
+            "Low (few records)",
+            "Medium (hundreds)",
+            "High (thousands+)",
+          ]}
         />
 
         <SelectField
@@ -207,7 +256,11 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
         />
 
         <label className="grid gap-1.5 text-sm md:col-span-2">
-          <LabelText icon={FiEdit3} text="Detailed Incident Description" isDark={isDark} />
+          <LabelText
+            icon={FiEdit3}
+            text="Detailed Incident Description"
+            isDark={isDark}
+          />
           <textarea
             name="description"
             value={form.description}
@@ -215,10 +268,15 @@ export default function ScenarioForm({ form, onChange, errors = {}, isDark = fal
             placeholder="Describe the incident in detail (e.g., multiple login failures followed by large data extraction from database)..."
             className={`${inputClassName} min-h-36 resize-y`}
           />
-          {errors.description ? <span className="text-xs text-red-600">{errors.description}</span> : null}
-          <span className={`inline-flex items-center gap-1 text-xs ${isDark ? "text-neutral-400" : "text-neutral-500"}`}>
+          {errors.description ? (
+            <span className="text-xs text-red-600">{errors.description}</span>
+          ) : null}
+          <span
+            className={`inline-flex items-center gap-1 text-xs ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
+          >
             <FiZap className="h-3.5 w-3.5" />
-            Include sequence, scope, and observable impact for better downstream analysis.
+            Include sequence, scope, and observable impact for better downstream
+            analysis.
           </span>
         </label>
       </div>

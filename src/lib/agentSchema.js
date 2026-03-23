@@ -22,7 +22,8 @@ export const strictOutputShape = {
   legal: {
     it_act: ["Section 43A", "Section 72A"],
     dpdp: ["Failure of security safeguards"],
-    penalty: "Likely monetary liability; potential high-value regulatory penalty depending on impact.",
+    penalty:
+      "Likely monetary liability; potential high-value regulatory penalty depending on impact.",
   },
   prevention: [
     "Enable MFA for all privileged accounts",
@@ -30,10 +31,14 @@ export const strictOutputShape = {
     "Encrypt sensitive data at rest and in transit",
   ],
   insights: {
-    executive_summary: "Unauthorized credential use led to probable access compromise of sensitive records.",
-    attack_narrative: "Likely path: credential theft -> weak auth validation -> backend query abuse -> sensitive data access.",
-    business_impact: "Elevated customer trust and operational disruption risk with potential notification obligations.",
-    legal_exposure_summary: "Material exposure under IT Act and DPDP due to safeguards failure and sensitive data handling lapses.",
+    executive_summary:
+      "Unauthorized credential use led to probable access compromise of sensitive records.",
+    attack_narrative:
+      "Likely path: credential theft -> weak auth validation -> backend query abuse -> sensitive data access.",
+    business_impact:
+      "Elevated customer trust and operational disruption risk with potential notification obligations.",
+    legal_exposure_summary:
+      "Material exposure under IT Act and DPDP due to safeguards failure and sensitive data handling lapses.",
     confidence: "HIGH",
     evidence_signals: [
       "Abnormal login pattern from unusual source",
@@ -46,7 +51,8 @@ export const strictOutputShape = {
       "Preserve forensic logs and initiate legal/compliance response",
     ],
   },
-  reason: "Credential compromise and abnormal access pattern indicate unauthorized access.",
+  reason:
+    "Credential compromise and abnormal access pattern indicate unauthorized access.",
 };
 
 const requiredInputKeys = [
@@ -90,10 +96,16 @@ export function validateAgentOutput(payload) {
   if (!allowedNodes.includes(payload.owasp.node)) return false;
 
   if (!payload.legal || typeof payload.legal !== "object") return false;
-  if (!Array.isArray(payload.legal.it_act) || payload.legal.it_act.some((item) => !isNonEmptyString(item))) {
+  if (
+    !Array.isArray(payload.legal.it_act) ||
+    payload.legal.it_act.some((item) => !isNonEmptyString(item))
+  ) {
     return false;
   }
-  if (!Array.isArray(payload.legal.dpdp) || payload.legal.dpdp.some((item) => !isNonEmptyString(item))) {
+  if (
+    !Array.isArray(payload.legal.dpdp) ||
+    payload.legal.dpdp.some((item) => !isNonEmptyString(item))
+  ) {
     return false;
   }
   if (!isNonEmptyString(payload.legal.penalty)) return false;

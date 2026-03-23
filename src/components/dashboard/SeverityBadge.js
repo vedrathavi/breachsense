@@ -7,10 +7,17 @@ function iconNodeForSeverity(level) {
   return <FiCheckCircle className="h-4 w-4" />;
 }
 
-export default function SeverityBadge({ severity = "LOW", className = "", title }) {
+export default function SeverityBadge({
+  severity = "LOW",
+  className = "",
+  title,
+}) {
   const iconNode = iconNodeForSeverity(severity);
   return (
-    <span title={title} className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-bold ${className}`}>
+    <span
+      title={title}
+      className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-bold ${className}`}
+    >
       {iconNode}
       {severity}
     </span>
