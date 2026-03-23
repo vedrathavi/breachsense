@@ -60,7 +60,10 @@ export async function POST(request) {
 
     const input = normalizeInput(body);
     const agentResult = await callGemini(input);
-    console.log("[API /api/agent response]", JSON.stringify(agentResult, null, 2));
+    console.log(
+      "[API /api/agent response]",
+      JSON.stringify(agentResult, null, 2),
+    );
     return NextResponse.json(agentResult, { status: 200 });
   } catch (error) {
     console.error("/api/agent analysis error:", error);
