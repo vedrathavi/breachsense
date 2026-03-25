@@ -1,8 +1,10 @@
 # BreachSense: Threat Modeling & Incident Analysis Platform
+#
+**Live Demo:** https://breachsense.vercel.app/
 
 ## What is BreachSense?
 
-BreachSense is an automated threat modeling and incident analysis platform. It helps security, compliance, and legal teams analyze cyber incidents, map threats, and generate actionable, legally-aware reports for Indian regulatory requirements.
+BreachSense is an automated threat modeling and incident analysis platform. It helps security, compliance, and legal teams analyze cyber incidents, map threats, and generate actionable, legally-aware reports for Indian and international regulatory requirements (including GDPR, HIPAA, and more).
 
 ## Why use BreachSense?
 
@@ -35,9 +37,12 @@ BreachSense is an automated threat modeling and incident analysis platform. It h
 
 - **Incident Analysis API:** POST to `/api/agent` with scenario details, receive structured JSON with breach type, severity, OWASP mapping, legal analysis, prevention, and insights.
 - **Interactive Dashboard:** Input scenarios, view results, and interact with the threat model diagram.
-- **PDF Export:** Download a compliance-ready report with all findings and a labeled diagram.
-- **Legal Mapping:** Maps Indian IT Act 2000 and DPDP obligations for each scenario.
-- **Actionable Prevention:** Get 3-5 prioritized prevention steps for each incident.
+- **PDF Export:** Download a compliance-ready report with all findings and a labeled diagram. Now includes improved formatting and more detailed legal/technical sections.
+- **Legal Mapping (Enhanced):** Maps Indian IT Act 2000, DPDP, and international laws (GDPR, HIPAA, etc.) for each scenario, with detailed section/provision breakdowns and penalty estimation.
+- **Severity Badges:** Visual severity indicators throughout the dashboard and reports for quick risk assessment.
+- **Detailed Results Panel:** Expanded legal analysis, including international law applicability, OWASP mapping, affected components, and prioritized prevention steps.
+- **Advanced System Diagram:** Dynamic, multi-layered threat model visualization with support for multiple system types and attack vectors.
+- **Actionable Prevention:** Get 3-5 prioritized prevention steps for each incident, tailored to scenario specifics.
 
 ## Setup & Usage
 
@@ -105,20 +110,6 @@ Response:
 }
 ```
 
----
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## API Testing: `/api/agent`
 
@@ -214,12 +205,31 @@ Expected success shape:
     "node": "auth"
   },
   "legal": {
-    "it_act": ["Section 43A"],
-    "dpdp": ["Failure of security safeguards"],
-    "penalty": "..."
+    "india": {
+      "it_act": ["Section 43A"],
+      "dpdp": ["Failure of security safeguards"]
+    },
+    "international": {
+      "gdpr": {
+        "applicable": false,
+        "articles": [],
+        "penalty": ""
+      },
+      "hipaa": {
+        "applicable": false,
+        "provisions": [],
+        "penalty": ""
+      },
+      "others": []
+    },
+    "overall_penalty": "Estimated combined exposure may exceed ₹40–80 crore, considering DPDP penalties, GDPR administrative fines, and civil liabilities."
   },
-  "prevention": ["..."],
-  "reason": "..."
+  "prevention": [
+    "Enable MFA for all privileged accounts",
+    "Enforce least-privilege access",
+    "Encrypt sensitive data at rest and in transit"
+  ],
+  "reason": "Credential compromise and abnormal access pattern indicate unauthorized access."
 }
 ```
 

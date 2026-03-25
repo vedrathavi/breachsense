@@ -72,56 +72,55 @@ export default function LegalCard({ legal, isDark = false }) {
           </h4>
           <div className="mt-2 space-y-2">
             <div>
-              <span className="font-semibold">GDPR: </span>
+              <span className={isDark ? "font-semibold text-neutral-200" : "font-semibold text-neutral-800"}>GDPR: </span>
               {Boolean(gdpr?.applicable) ? (
                 <>
-                  <span className="font-normal">Articles: </span>
+                  <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}>Articles: </span>
                   {Array.isArray(gdpr?.articles) && gdpr.articles.length > 0 ? (
-                    <ul className="list-disc pl-5">
+                    <ul className={isDark ? "list-disc pl-5 text-neutral-200" : "list-disc pl-5 text-neutral-800"}>
                       {gdpr.articles.map((art, idx) => (
                         <li key={`gdpr-article-${art}-${idx}`}>{art}</li>
                       ))}
                     </ul>
                   ) : (
-                    <span>Not specified</span>
+                    <span className={isDark ? "text-neutral-400" : "text-neutral-500"}>Not specified</span>
                   )}
                   <div>
-                    <span className="font-normal">Penalty: </span>
-                    {gdpr.penalty || "Not specified"}
+                    <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}>Penalty: </span>
+                    <span className={isDark ? "text-neutral-200" : "text-neutral-800"}>{gdpr.penalty || "Not specified"}</span>
                   </div>
                 </>
               ) : (
-                <span>Not Applicable</span>
+                <span className={isDark ? "text-neutral-400" : "text-neutral-500"}>Not Applicable</span>
               )}
             </div>
             <div>
-              <span className="font-semibold">HIPAA: </span>
+              <span className={isDark ? "font-semibold text-neutral-200" : "font-semibold text-neutral-800"}>HIPAA: </span>
               {Boolean(hipaa?.applicable) ? (
                 <>
-                  <span className="font-normal">Provisions: </span>
-                  {Array.isArray(hipaa?.provisions) &&
-                  hipaa.provisions.length > 0 ? (
-                    <ul className="list-disc pl-5">
+                  <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}>Provisions: </span>
+                  {Array.isArray(hipaa?.provisions) && hipaa.provisions.length > 0 ? (
+                    <ul className={isDark ? "list-disc pl-5 text-neutral-200" : "list-disc pl-5 text-neutral-800"}>
                       {hipaa.provisions.map((prov, idx) => (
                         <li key={`hipaa-prov-${prov}-${idx}`}>{prov}</li>
                       ))}
                     </ul>
                   ) : (
-                    <span>Not specified</span>
+                    <span className={isDark ? "text-neutral-400" : "text-neutral-500"}>Not specified</span>
                   )}
                   <div>
-                    <span className="font-normal">Penalty: </span>
-                    {hipaa.penalty || "Not specified"}
+                    <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}>Penalty: </span>
+                    <span className={isDark ? "text-neutral-200" : "text-neutral-800"}>{hipaa.penalty || "Not specified"}</span>
                   </div>
                 </>
               ) : (
-                <span>Not Applicable</span>
+                <span className={isDark ? "text-neutral-400" : "text-neutral-500"}>Not Applicable</span>
               )}
             </div>
             {others.length > 0 && (
               <div>
-                <span className="font-semibold">Other Frameworks: </span>
-                <ul className="list-disc pl-5">
+                <span className={isDark ? "font-semibold text-neutral-200" : "font-semibold text-neutral-800"}>Other Frameworks: </span>
+                <ul className={isDark ? "list-disc pl-5 text-neutral-200" : "list-disc pl-5 text-neutral-800"}>
                   {others.map((other, idx) =>
                     typeof other === "string" ? (
                       <li key={`otherlaw-${idx}`}>{other}</li>
@@ -131,20 +130,20 @@ export default function LegalCard({ legal, isDark = false }) {
                         className="mb-2"
                       >
                         <div>
-                          <span className="font-semibold">
+                          <span className={isDark ? "font-semibold text-neutral-200" : "font-semibold text-neutral-800"}>
                             {other.framework || "Unknown"}:
                           </span>
                           {other.violation && (
                             <>
-                              <span className="font-normal"> Violation: </span>
-                              {other.violation}
+                              <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}> Violation: </span>
+                              <span className={isDark ? "text-neutral-200" : "text-neutral-800"}>{other.violation}</span>
                             </>
                           )}
                           {other.penalty && (
                             <>
                               <br />
-                              <span className="font-normal">Penalty: </span>
-                              {other.penalty}
+                              <span className={isDark ? "font-normal text-neutral-200" : "font-normal text-neutral-800"}>Penalty: </span>
+                              <span className={isDark ? "text-neutral-200" : "text-neutral-800"}>{other.penalty}</span>
                             </>
                           )}
                         </div>
