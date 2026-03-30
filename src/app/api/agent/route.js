@@ -1,3 +1,17 @@
+// route.js
+// This API route handles POST requests for breach scenario analysis using the Gemini AI model.
+// It receives scenario input, builds a prompt, calls the Gemini API, parses and validates the response, and returns structured analysis results.
+//
+// Main responsibilities:
+//   - Receive and validate scenario input from the frontend
+//   - Build a prompt for the Gemini AI model
+//   - Call the Gemini API and handle errors
+//   - Parse and validate the AI response
+//   - Return structured analysis results as JSON
+//
+// Exports:
+//   - POST: Handles POST requests for breach analysis
+
 import { NextResponse } from "next/server";
 import { buildAgentPrompt, extractJsonObject } from "@/lib/agentLogic";
 import {

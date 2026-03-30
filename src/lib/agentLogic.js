@@ -1,3 +1,18 @@
+// agentLogic.js
+// This module contains the core logic for constructing prompts and handling agent-related operations in the BreachSense app.
+// It is responsible for building the prompt that is sent to the AI agent, formatting scenario data, and managing agent instructions.
+// All functions are pure and do not cause side effects.
+//
+// Main responsibilities:
+//   - Build the agent prompt using scenario and user input
+//   - Format scenario data for the agent
+//   - Provide reusable logic for agent API endpoints
+//
+// Exports:
+//   - buildAgentPrompt: Constructs the full prompt for the agent
+//   - formatScenario: Formats scenario data for prompt inclusion
+//   - AGENT_PROMPT: The static instructions for the agent
+
 import { strictOutputShape } from "./agentSchema";
 
 export function buildAgentPrompt(input) {

@@ -1,3 +1,14 @@
+// InputPanel.js
+// This component provides a styled container for input sections in the UI.
+// It is used to wrap scenario input forms and other user input areas.
+//
+// Main responsibilities:
+//   - Render a titled, styled section for input fields
+//   - Support dark and light mode styling
+//
+// Exports:
+//   - InputPanel: React component for input section layout
+
 export default function InputPanel({
   title = "Incident Input",
   children,

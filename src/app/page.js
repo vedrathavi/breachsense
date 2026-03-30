@@ -1,3 +1,16 @@
+// page.js
+// This is the main page for the BreachSense app.
+// It manages the breach scenario form, handles user input, submits data to the backend, and displays analysis results.
+//
+// Main responsibilities:
+//   - Render the scenario input form and handle user input
+//   - Submit scenario data to the backend API for analysis
+//   - Manage loading, error, and result states
+//   - Display analysis results, legal findings, and system diagram
+//
+// Exports:
+//   - The main React component for the app's homepage
+
 "use client";
 
 import dynamic from "next/dynamic";

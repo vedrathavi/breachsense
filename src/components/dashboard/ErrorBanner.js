@@ -1,3 +1,14 @@
+// ErrorBanner.js
+// This component displays an error message banner when analysis fails or an error occurs.
+// It provides a clear, styled alert to the user with the error message.
+//
+// Main responsibilities:
+//   - Render a styled error banner with an icon and message
+//   - Support dark and light mode styling
+//
+// Exports:
+//   - ErrorBanner: React component for error display
+
 import { FiAlertTriangle } from "react-icons/fi";
 
 export default function ErrorBanner({ message, isDark = false }) {

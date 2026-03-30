@@ -91,6 +91,15 @@ export default function PdfReportButton({ result, scenario, diagramImage }) {
   }
 
   function downloadPdf() {
+    // PdfReportButton.js
+    // This component renders a button that allows users to download a PDF report of the analysis results.
+    // It handles the click event to trigger PDF generation and download.
+    //
+    // Main responsibilities:
+    //   - Render a styled button for PDF download
+    //   - Handle click events to generate and download the PDF
+    //   - Provide feedback to the user during the download process
+
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const data = buildNormalizedResult(result);
 

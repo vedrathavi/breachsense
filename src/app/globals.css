@@ -1,3 +1,8 @@
+/* globals.css
+   This file defines global CSS variables, color themes, and base styles for the BreachSense app.
+   It sets up light/dark color schemes and font families for consistent UI appearance.
+*/
+
 @import "tailwindcss";
 
 :root {

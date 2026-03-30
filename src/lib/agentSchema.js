@@ -69,6 +69,24 @@ export function normalizeInput(body) {
   const input = {};
   requiredInputKeys.forEach((key) => {
     input[key] = typeof body?.[key] === "string" ? body[key].trim() : "";
+  // agentSchema.js
+  // This module defines the schema and validation logic for agent input and output in the BreachSense app.
+  // It provides functions to validate, normalize, and sanitize data exchanged with the agent.
+  //
+  // Main responsibilities:
+  //   - Define the expected structure for agent input and output
+  //   - Validate incoming data for required fields and types
+  //   - Normalize and sanitize data to ensure consistency
+  //
+  // Exports:
+  //   - allowedBreachTypes: Array of valid breach types
+  //   - allowedSeverity: Array of valid severity levels
+  //   - allowedNodes: Array of valid system nodes
+  //   - allowedConfidence: Array of valid confidence levels
+  //   - strictOutputShape: Example output structure for validation
+  //   - normalizeInput: Function to normalize input data
+  //   - validateInputPayload: Function to validate input payload
+  //   - validateAgentOutput: Function to validate agent output
   });
   return input;
 }

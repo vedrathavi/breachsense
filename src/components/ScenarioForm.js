@@ -87,6 +87,19 @@ function SelectField({
 }
 
 export default function ScenarioForm({
+// ScenarioForm.js
+// This component renders the form for users to input breach scenario details.
+// It manages form state, validation, and submission logic for scenario analysis.
+//
+// Main responsibilities:
+//   - Render input fields for scenario details (system, data, attack, etc.)
+//   - Manage form state and handle user input
+//   - Validate input and display errors
+//   - Trigger analysis when the form is submitted
+//   - Support dark and light mode styling
+//
+// Exports:
+//   - ScenarioForm: React component for scenario input
   form,
   onChange,
   errors = {},
@@ -103,6 +116,7 @@ export default function ScenarioForm({
       }`}
     >
       <h2
+  // The heading for the incident configuration section
         className={`text-xl font-semibold ${isDark ? "text-neutral-100" : "text-neutral-900"}`}
       >
         Incident Configuration

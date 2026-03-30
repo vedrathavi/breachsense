@@ -1,3 +1,14 @@
+// severityTheme.js
+// This module provides the mapping between severity levels and their corresponding UI theme styles in the BreachSense app.
+// It is used to ensure consistent color coding and styling for severity badges and indicators throughout the UI.
+//
+// Main responsibilities:
+//   - Map severity levels (e.g., Low, Medium, High, Critical) to color and style objects
+//   - Export theme objects for use in React components
+//
+// Exports:
+//   - severityTheme: Object mapping severity levels to theme styles
+
 export const severityLevels = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
 
 export function normalizeSeverity(value) {

@@ -1,3 +1,15 @@
+// SeverityBadge.js
+// This component displays a badge representing the severity level of a breach or risk.
+// It uses icons and color coding to visually indicate severity.
+//
+// Main responsibilities:
+//   - Render a badge with severity label and icon
+//   - Support different severity levels (LOW, MEDIUM, HIGH, CRITICAL)
+//   - Support dark and light mode styling
+//
+// Exports:
+//   - SeverityBadge: React component for severity display
+
 import { FiAlertTriangle, FiCheckCircle, FiInfo, FiZap } from "react-icons/fi";
 
 function iconNodeForSeverity(level) {

@@ -1,3 +1,24 @@
+// ResultsPanel.js
+// This component displays the results of the breach analysis, including summary, details, and legal findings.
+// It receives analysis data as props and renders the appropriate UI sections.
+//
+// Main responsibilities:
+//   - Render summary and detailed results of the analysis
+//   - Display legal findings and recommendations
+//   - Provide a clear and organized layout for results
+
+// ResultsPanel.js
+// This component displays the results of the breach analysis, including summary, details, and legal findings.
+// It receives analysis data as props and renders the appropriate UI sections.
+//
+// Main responsibilities:
+//   - Render summary and detailed results of the analysis
+//   - Display legal findings and recommendations
+//   - Provide a clear and organized layout for results
+//
+// Exports:
+//   - ResultsPanel: React component for displaying analysis results
+
 function severityBadgeClass(severity) {
   if (severity === "Critical") return "bg-red-600 text-white";
   if (severity === "High") return "bg-orange-500 text-white";

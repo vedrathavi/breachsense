@@ -1,3 +1,15 @@
+// layout.js
+// This file defines the root layout for the BreachSense Next.js app.
+// It sets up global fonts, metadata, and the main HTML/body structure for all pages.
+//
+// Main responsibilities:
+//   - Import and configure custom fonts
+//   - Define global metadata (title, description)
+//   - Provide the root HTML and body structure for the app
+//
+// Exports:
+//   - RootLayout: The main layout component wrapping all pages
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 

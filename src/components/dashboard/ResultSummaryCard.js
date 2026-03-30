@@ -1,3 +1,15 @@
+// ResultSummaryCard.js
+// This component displays a summary card for analysis results or key information.
+// It is used to highlight important results, metrics, or insights in the dashboard.
+//
+// Main responsibilities:
+//   - Render a styled card with title, icon, and content
+//   - Support dark and light mode styling
+//   - Provide optional tooltip for additional context
+//
+// Exports:
+//   - ResultSummaryCard: React component for summary display
+
 export default function ResultSummaryCard({
   title,
   icon: Icon,

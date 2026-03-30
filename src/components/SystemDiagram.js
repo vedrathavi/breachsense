@@ -2,6 +2,18 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import cytoscape from "cytoscape";
+// SystemDiagram.js
+// This component visualizes the system architecture and data flow for the selected breach scenario.
+// It uses Cytoscape to render interactive diagrams based on the scenario type.
+//
+// Main responsibilities:
+//   - Map scenario types to architecture node/edge definitions
+//   - Render a dynamic, interactive diagram of system components and data flow
+//   - Highlight affected nodes and edges based on analysis results
+//   - Support light and dark mode visuals
+//
+// Exports:
+//   - SystemDiagram: React component for system visualization
 import {
   FiAlertTriangle,
   FiArrowRight,
